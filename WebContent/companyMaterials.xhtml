@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+  <h:head>
+   <title><ui:insert name="title">insert title</ui:insert></title>
+   <meta content="text/html; charset=UTF-8" http-equiv="Content-type" />
+   <link type = "text/css"  rel="stylesheet" href="/your/theme/skin.css" />
+   </h:head>
+
+<h:body>
+<h:form id="materials">
+<p:dataTable value="#{materialManageBean.materials}" var="material">
+    <p:column headerText="Material ID">
+        <h:outputText value="#{material.ID}"></h:outputText>
+    </p:column>
+    <p:column headerText="Material name">
+        <h:outputText value="#{material.name}"></h:outputText>
+    </p:column>
+    <p:column headerText="Edit">
+    	<p:commandLink id="nonAjax" action="#{materialManageBean.consumeMaterial(material)}" ajax="false">
+        	<h:outputText value="Edit" />
+    	</p:commandLink>
+    </p:column> 
+</p:dataTable>
+</h:form>
+</h:body>
+
+</f:view>
+
+</html>

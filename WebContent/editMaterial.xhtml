@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+  <h:head>
+   <title><ui:insert name="title">Companies</ui:insert></title>
+   <meta content="text/html; charset=UTF-8" http-equiv="Content-type" />
+   <link type = "text/css"  rel="stylesheet" href="/your/theme/skin.css" />
+   </h:head>
+
+<h:body>
+<h:form id="editMaterial">
+    <p:panel header="Edit material">
+ 
+        <h:panelGrid id="grid" columns="3" cellpadding="5">
+            <h:outputLabel for="name" value="Name:" style="font-weight:bold"/>                    
+            <p:inputText id="name" value="#{materialManageBean.material.name}" required="true" label="Name"/>
+            <p:message for="name" />
+           
+ 
+            <h:outputLabel for="description" value="Description:" style="font-weight:bold"/>                    
+            <p:inputTextarea id="description" value="#{materialManageBean.material.description}" label="Descrpition">
+            </p:inputTextarea>
+            <p:message for="description" />
+ 
+            <h:outputLabel for="notes" value="Notes:" style="font-weight:bold"/>                    
+            <p:inputTextarea id="notes" value="#{materialManageBean.material.notes}" label="Notes">
+            </p:inputTextarea>
+            <p:message for="notes" />
+ 
+            <h:outputLabel for="currency" value="Currency :" style="font-weight:bold"/>                   
+            <p:inputText id="currency" value="#{materialManageBean.material.currency}" label="Currency">
+            </p:inputText>
+            <p:message for="currency" />
+            
+            <h:outputLabel for="price" value="Price:" style="font-weight:bold"/>                    
+            <p:inputText id="price" value="#{materialManageBean.material.price}" label="Price">
+                <f:validateDoubleRange minimum="1" maximum="2000000" />
+            </p:inputText>
+            <p:message for="price" />
+            
+            <h:outputLabel for="supplier" value="Supplier:" style="font-weight:bold"/>   
+            <p:selectOneMenu id="supplier" value="#{materialManageBean.material.supplier}" style="width:150px">
+            	<f:selectItem itemValue="#{materialManageBean.material.supplier}" />
+                <f:selectItems value="#{companyManageBean.companies}" var="company" itemValue="#{company.companyName}" itemLabel="#{company.companyName}"/>
+            </p:selectOneMenu>
+
+        </h:panelGrid>
+ 
+        <p:commandButton value="Submit" update="grid" icon="ui-icon-check" validateClient="true" action="#{materialManageBean.showMaterialDetails}" style="margin-right:10px"/>
+    </p:panel>
+</h:form>
+</h:body>
+
+</f:view>
+
+</html>

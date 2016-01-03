@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+  <h:head>
+   <title><ui:insert name="title">Material details</ui:insert></title>
+   <meta content="text/html; charset=UTF-8" http-equiv="Content-type" />
+   <link type = "text/css"  rel="stylesheet" href="/your/theme/skin.css" />
+   </h:head>
+
+<h:body>
+<h:form id="material">
+
+<p:outputPanel>
+<h:panelGrid columns="2" cellpadding="5">
+		
+		<h:outputText value="Name: " />
+        <h:outputText value="#{materialManageBean.material.name}"></h:outputText>
+
+    
+    
+		<h:outputText value="Description: " />
+        <h:outputText value="#{materialManageBean.material.description}"></h:outputText>
+
+    
+		<h:outputText value="Notes: " />
+    	<h:outputText value="#{materialManageBean.material.notes}"></h:outputText>
+
+
+    
+		<h:outputText value="Supplier: " />
+   		<h:outputText value="#{materialManageBean.material.supplier}"></h:outputText>
+
+
+    
+		<h:outputText value="Price: " />
+    	<h:outputText value="#{materialManageBean.material.price}"></h:outputText>
+
+    
+    
+		<h:outputText value="Currency: " />
+    	<h:outputText value="#{materialManageBean.material.currency}"></h:outputText>
+
+    
+		<h:outputText value="ID: " />
+    	<h:outputText value="#{materialManageBean.material.ID}"></h:outputText>
+    	
+    	<p:commandButton value="Edit" id="nonAjax" action="#{materialManageBean.showMaterialEditPage}" ajax="false" />
+
+</h:panelGrid>
+</p:outputPanel>
+
+</h:form>
+</h:body>
+
+</f:view>
+
+</html>
