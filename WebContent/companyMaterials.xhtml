@@ -21,12 +21,15 @@
     <p:column headerText="Material name">
         <h:outputText value="#{material.name}"></h:outputText>
     </p:column>
-    <p:column headerText="Edit">
+    <p:column headerText="Properties">
     	<p:commandLink id="nonAjax" action="#{materialManageBean.consumeMaterial(material)}" ajax="false">
-        	<h:outputText value="Edit" />
+        	<h:outputText value="Properties" />
     	</p:commandLink>
     </p:column> 
 </p:dataTable>
+
+<p:commandButton value="Go back" id="nonAjax1" action="#{companyManageBean.showCompanies}" ajax="false" />
+
 </h:form>
 </h:body>
 

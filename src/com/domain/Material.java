@@ -8,15 +8,27 @@ public class Material {
 	
 	@JsonProperty("ID")
 	private Integer ID;
+	private Integer companyID;
 	private String name;
 	private String description;
 	private String notes;
 	private String supplier;
 	private Integer price;
 	private String currency;
+	private boolean modified = false;
 	
+	public Material() {
+		this.modified = false;
+	}
 	
-	
+	public boolean isModified() {
+		return modified;
+	}
+
+	public void setModified(boolean modified) {
+		this.modified = modified;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -59,7 +71,12 @@ public class Material {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public Integer getCompanyID() {
+		return companyID;
+	}
+	public void setCompanyID(Integer companyID) {
+		this.companyID = companyID;
+	}
 	
 
 }

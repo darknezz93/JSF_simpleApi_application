@@ -7,6 +7,8 @@ import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -23,6 +25,7 @@ public class MaterialManageBean {
 	private Material material = new Material();
 	private NavigationBean navigation = new NavigationBean();
 	private ApiBean apiBean = new ApiBean();
+	private Company company = new Company();
 
 	
 	public Material getMaterial() {
@@ -51,21 +54,64 @@ public class MaterialManageBean {
 	
 	
 	public String consumeCompanyMaterials(Company company) {
-		this.materials = apiBean.apiCompanyMaterials(company);
+		FacesContext context = FacesContext.getCurrentInstance();
+		this.materials = new ArrayList<Material>();
+		this.materials = (List<Material>) context.getExternalContext().getSessionMap().get("materials" + company.getCompanyID().toString());
+		
+		if(this.materials == null)
+			this.materials = apiBean.apiCompanyMaterials(company);
+		this.company = company;
 		return navigation.goToCompanyMaterials();
 	}
 	
 	public String consumeMaterial(Material material) {
-		this.material = apiBean.apiConsumeMaterial(material);
+		FacesContext context = FacesContext.getCurrentInstance();
+		List<Material> sessionMaterials = new ArrayList<Material>();
+		
+		System.out.println(this.material.isModified());
+		
+		if(context.getExternalContext().getSessionMap().get("materials" + material.getCompanyID().toString()) == null)
+			material = apiBean.apiConsumeMaterial(material);
+		else
+			sessionMaterials = (List<Material>) context.getExternalContext().getSessionMap().get("materials" + material.getCompanyID().toString());
+			for(int i = 0 ; i < sessionMaterials.size(); i++) {
+				if(sessionMaterials.get(i).getID() == material.getID())
+					if(material.isModified()) {
+						material = sessionMaterials.get(i);
+					} else {
+						material = apiBean.apiConsumeMaterial(material);
+					}
+				
+					
+			}
+		this.material = material;	
+			
 		return navigation.goToMaterialDetails();
 	}
 	
 	public String showMaterialEditPage() {
-		return navigation.editMaterialDetails();
+		return navigation.goToEditMaterialDetails();
 	}
 	
-	public String showMaterialDetails() {
+	public String showMaterialDetailsPage() {
 		return navigation.goToMaterialDetails();
+	}
+	
+	public String saveAndShowMaterialDetails() {
+		saveMaterialDetailsLocally();
+		return navigation.goToMaterialDetails();
+	}
+	
+	private void saveMaterialDetailsLocally() {
+		for(int i = 0; i < materials.size(); i++) {
+			if(materials.get(i).getID() == material.getID()) {
+				this.material.setModified(true);
+				this.material.setCompanyID(this.company.getCompanyID());
+				materials.set(i, material);
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.getExternalContext().getSessionMap().put("materials" + this.company.getCompanyID().toString(), materials);
+			}
+		}	
 	}
 	
 	

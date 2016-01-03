@@ -10,8 +10,12 @@ public class NavigationBean {
 		return "/material.xhtml?faces-redirect=true";
 	}
 	
-	public String editMaterialDetails() {
+	public String goToEditMaterialDetails() {
 		return "/editMaterial.xhtml?faces-redirect=true";
+	}
+	
+	public String goToCompanies() {
+		return "/companies.xhtml?faces-redirect=true";
 	}
 
 }

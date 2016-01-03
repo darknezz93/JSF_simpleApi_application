@@ -53,7 +53,6 @@ public class ApiBean {
 			if(response.getStatus() != 200) {
 				throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
 			}
-			System.out.println("ID: " + company.getCompanyID().toString());
 			
 			String jsonInString = response.getEntity(String.class);
 			

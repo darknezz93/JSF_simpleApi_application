@@ -16,6 +16,7 @@ public class CompanyManageBean {
 	
 	private List<Company> companies = new ArrayList<Company>();
 	private ApiBean apiBean = new ApiBean();
+	private NavigationBean navigation = new NavigationBean();
 	
 	public List<Company> getCompanies() {
 		return companies;
@@ -29,6 +30,15 @@ public class CompanyManageBean {
 	public void consumeCompanies() {
 		this.companies = apiBean.apiCompanies();
 	}
+	
+	public String showCompanyMaterials() {
+		return navigation.goToCompanyMaterials();
+	}
+	
+	public String showCompanies() {
+		return navigation.goToCompanies();
+	}
+	
 	
 	
 	
