@@ -68,8 +68,6 @@ public class MaterialManageBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		List<Material> sessionMaterials = new ArrayList<Material>();
 		
-		System.out.println(this.material.isModified());
-		
 		if(context.getExternalContext().getSessionMap().get("materials" + material.getCompanyID().toString()) == null)
 			material = apiBean.apiConsumeMaterial(material);
 		else
