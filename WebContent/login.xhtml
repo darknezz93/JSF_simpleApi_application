@@ -4,27 +4,29 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui">
-    
-<h:outputStylesheet library="css" name="login.css" />    
+  
+<h:outputStylesheet name="css/style.css" /> 
+  
 
 <f:view>
   <h:head>
    <title><ui:insert name="title">Login</ui:insert></title>
    <meta content="text/html; charset=UTF-8" http-equiv="Content-type" />
    <link type = "text/css"  rel="stylesheet" href="/your/theme/skin.css" />
-   </h:head>
+   <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'/>
+</h:head>
 
 <h:body>
     <h:form>
     
    	    <p:growl id="message" showDetail="true" />
-        <h3>Login to application.</h3>
-        <h:outputText value="Username " />
+        <h3>Login to application</h3>
+        <h1><h:outputText value="Username: " /></h1>
         <h:inputText id="username" value="#{loginManageBean.userName}"></h:inputText>
         <h:message for="username"></h:message>
         <br /><br />
          
-        <h:outputText value="Password " />
+        <h1><h:outputText value="Password: " /></h1>
         <h:inputSecret id="password" value="#{loginManageBean.password}"></h:inputSecret>
         <h:message for="password"></h:message>
         <br /><br />

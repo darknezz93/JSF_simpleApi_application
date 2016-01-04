@@ -1,0 +1,43 @@
+
+
+body {
+    background-color: #FFAD33;
+    text-align:center;
+
+}
+
+h3 {
+	font-family: 'Indie Flower', cursive;
+	font-size: 200%;
+	text-align:center;
+	padding-top:100px;
+} 
+
+h1 {
+	font-family: 'Indie Flower', cursive;
+	font-size:110%;
+	margin-bottom:4px;
+}
+
+#material {
+	text-align:center;
+    display: table;
+    margin: 0 auto;
+	
+}
+
+#materials {
+	width:700px;
+	text-align:center;
+    display: table;
+    margin: 0 auto;
+    margin-top:10%;
+}
+
+#companies {
+	width:700px;
+	text-align:center;
+    display: table;
+    margin: 0 auto;
+    margin-top:10%;
+}
