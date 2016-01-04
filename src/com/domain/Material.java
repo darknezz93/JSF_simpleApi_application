@@ -3,6 +3,11 @@ package com.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Material domain class
+ * @author Adam
+ *
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Material {
 	

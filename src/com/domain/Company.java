@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.ArrayList;
 import com.domain.Material;
 
+/**
+ * Company domain class
+ * @author Adam
+ *
+ */
 public class Company {
 	
 	private Integer companyID;

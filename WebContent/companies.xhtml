@@ -4,6 +4,10 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui">
+    
+       <f:metadata>
+          <f:event type="preRenderView" listener="#{companyManageBean.checkForRestore}"/>
+      </f:metadata>
 
 <f:view>
   <h:head>
@@ -21,14 +25,29 @@
     <p:column headerText="Company Name">
         <h:outputText value="#{company.companyName}"></h:outputText>
     </p:column>
-    <p:column headerText="Properties">
+    <p:column headerText="Materials">
     	<p:commandLink id="nonAjax" action="#{materialManageBean.consumeCompanyMaterials(company)}" ajax="false">
-        	<h:outputText value="Properties" />
+        	<h:outputText value="Materials" />
     	</p:commandLink>
     </p:column>
 </p:dataTable>
 
-<p:commandButton value="Restore original data" id="nonAjax1" action="#{companyManageBean.restoreData}" ajax="false" />
+<h:form>           
+    <p:growl id="message" showDetail="true" />
+ 
+    <p:commandButton value="Restore original data" action="#{companyManageBean.restoreData}" style="display:#{companyManageBean.restore?'inline':'none'}" update="message">
+        <p:confirm header="Restore data" message="Are you sure?" icon="ui-icon-alert" />
+    </p:commandButton>
+    
+    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+    
+    <p:commandButton value="Logout" action="#{loginManageBean.logoutUser}" style="margin-right:10px"/>
+</h:form>
+
+
 </h:form>
 </h:body>
 

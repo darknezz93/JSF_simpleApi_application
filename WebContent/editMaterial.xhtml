@@ -7,13 +7,13 @@
 
 <f:view>
   <h:head>
-   <title><ui:insert name="title">Companies</ui:insert></title>
+   <title><ui:insert name="title">Edit Material</ui:insert></title>
    <meta content="text/html; charset=UTF-8" http-equiv="Content-type" />
    <link type = "text/css"  rel="stylesheet" href="/your/theme/skin.css" />
    </h:head>
 
 <h:body>
-<h:form id="editMaterial">
+<h:form id="material">
     <p:panel header="Edit material">
  
         <h:panelGrid id="grid" columns="3" cellpadding="5">
@@ -52,7 +52,6 @@
         </h:panelGrid>
  
         <p:commandButton value="Save locally" update="grid" icon="ui-icon-check" validateClient="true" action="#{materialManageBean.saveAndShowMaterialDetails}" style="margin-right:10px"/>
-        <p:commandButton value="Go back" action="#{materialManageBean.showMaterialDetailsPage}" style="margin-right:10px"/>
         
     </p:panel>
 </h:form>
